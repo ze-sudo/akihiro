@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あきひろ</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .hidden-text {
+            font-size: 5px; /* 非常に小さいサイズ */
+            opacity: 0.1; /* 不透明度を低く設定 */
+            transform: rotate(45deg); /* 文字を傾ける */
+            animation: scramble 5s infinite;
+        }
+        @keyframes scramble {
+            0%, 100% {
+                transform: rotate(45deg) translate(0, 0);
+            }
+            50% {
+                transform: rotate(-30deg) translate(10px, 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hidden-text">バカ</div>
+    <script>
+        // 文字がさらにランダムに動くように更新
+        setInterval(() => {
+            const element = document.querySelector('.hidden-text');
+            const randomRotate = Math.random() * 360 - 180; // -180度～180度
+            const randomTranslateX = Math.random() * 100 - 50; // -50px～50px
+            const randomTranslateY = Math.random() * 100 - 50; // -50px～50px
+            element.style.transform = `rotate(${randomRotate}deg) translate(${randomTranslateX}px, ${randomTranslateY}px)`;
+            element.style.fontSize = `${Math.random() * 10 + 5}px`; // フォントサイズも変化
+            element.style.opacity = Math.random() * 0.3 + 0.1; // 不透明度も変化
+        }, 500);
+    </script>
+</body>
+</html>
